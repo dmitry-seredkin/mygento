@@ -13,10 +13,12 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": false,
     "target": "es6",
+    "typeRoots": ["types", "node_modules/@types"]
   },
   "exclude": [
     ".next",
