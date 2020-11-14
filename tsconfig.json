@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "jsx": "preserve",
     "lib": [
       "dom",
