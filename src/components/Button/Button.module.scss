@@ -1,3 +1,26 @@
-.button {
-  background-color: red;
+.root {
+  height: 2.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #1890FF;
+  border-radius: 0.125rem;
+  box-shadow: none !important;
+  &:hover {
+    background-color: #40A9FF;
+  }
+  &:active {
+    background-color: #096DD9;
+  }
+}
+
+.disabled {
+  background-color: #E8E8E8;
+  & .label {
+    color: #BCBCBC;
+  }
+}
+
+.label {
+  text-transform: none;
 }

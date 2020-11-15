@@ -14,7 +14,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Button />
+        <Button>Check mui button</Button>
+        <Button disabled>Check mui button</Button>
+
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>

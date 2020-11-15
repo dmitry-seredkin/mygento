@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
     "lib": [
       "dom",
@@ -13,18 +13,26 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": false,
     "target": "es6",
-    "typeRoots": ["types", "node_modules/@types"]
+    "typeRoots": [
+      "types",
+      "node_modules/@types"
+    ]
   },
   "exclude": [
     ".next",
     "node_modules"
   ],
   "include": [
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ]
