@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 
 import {
-  Checkbox as MUICheckbox,
   FormControl,
   FormControlLabel,
   FormControlLabelProps,
+  Checkbox as MUICheckbox,
 } from '@material-ui/core'
 
-import { CheckboxIcon, CheckboxCheckedIcon } from 'components/Icons'
+import { CheckboxCheckedIcon, CheckboxIcon } from 'components/Icons'
 
 import styles from './Checkbox.module.scss'
 

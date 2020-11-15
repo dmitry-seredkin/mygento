@@ -23,7 +23,13 @@ module.exports = {
   rules: {
     "prettier/prettier": 1,
     "react/display-name": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    'sort-imports': [
+      1,
+      {
+        ignoreDeclarationSort: true,
+      },
+    ],
   },
   settings: {
     "react": {

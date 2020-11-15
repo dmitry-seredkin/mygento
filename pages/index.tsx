@@ -4,7 +4,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 import Button from 'components/Button'
-import { Checkbox, TextInput } from 'components/Form'
+import { Checkbox, RadioGroup, TextInput } from 'components/Form'
 
 export default function Home() {
   return (
@@ -32,6 +32,14 @@ export default function Home() {
         />
         <TextInput label="input label" placeholder="placeholder" helperText="helper text" error />
         <Checkbox label="label" />
+        <RadioGroup
+          label="Пол"
+          options={[
+            { value: 0, label: 'Мужской' },
+            { value: 1, label: 'Женский' },
+          ]}
+          value={0}
+        />
 
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
