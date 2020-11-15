@@ -3,8 +3,8 @@ import React from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-import Button from 'src/components/Button'
-import { Checkbox, TextInput } from 'src/components/Form'
+import Button from 'components/Button'
+import { Checkbox, TextInput } from 'components/Form'
 
 export default function Home() {
   return (

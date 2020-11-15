@@ -13,6 +13,9 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
+    "paths": {
+      "components/*": ["src/components/*"]
+    },
     "plugins": [
       {
         "name": "typescript-plugin-css-modules"
