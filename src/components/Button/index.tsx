@@ -7,6 +7,8 @@ type TOuterProps = {
 }
 type TProps = TOuterProps
 
-const Button: FC<TProps> = ({}) => <button className={styles.button}>check</button>
+const Button: FC<TProps> = ({}) => (
+  <button className={styles.button}>some changes for pre-commit</button>
+)
 
 export default Button
