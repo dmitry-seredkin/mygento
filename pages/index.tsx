@@ -4,7 +4,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 import Button from 'src/components/Button'
-import { TextInput } from 'src/components/Form'
+import { Checkbox, TextInput } from 'src/components/Form'
 
 export default function Home() {
   return (
@@ -31,6 +31,7 @@ export default function Home() {
           required
         />
         <TextInput label="input label" placeholder="placeholder" helperText="helper text" error />
+        <Checkbox label="checkbox label" />
 
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
