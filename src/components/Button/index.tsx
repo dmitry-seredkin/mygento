@@ -4,7 +4,7 @@ import { Button as MUIButton, ButtonProps as MUIButtonProps } from '@material-ui
 
 import styles from './Button.module.scss'
 
-type TOuterProps = Omit<MUIButtonProps, 'classes' | 'size' | 'variant'> & {}
+type TOuterProps = Omit<MUIButtonProps, 'classes' | 'size' | 'variant'>
 type TProps = TOuterProps
 
 const Button: FC<TProps> = ({ ...props }) => {

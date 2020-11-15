@@ -1,0 +1,77 @@
+.root {
+  margin-bottom: 2.625rem;
+}
+
+
+.labelRoot {
+  position: static;
+  margin-bottom: 0.125rem;
+  font-size: 0.875rem;
+  line-height: 1.57;
+  color: #000;
+  transform: none;
+  & + .inputRoot {
+    margin: 0;
+  }
+  &.labelFocused, &.labelError {
+    color: #000;
+  }
+  
+}
+
+.labelFocused {}
+
+.labelError {}
+
+.inputRoot {
+  border: 0.0625rem solid #D9D9D9;
+  border-radius: 0.125rem;
+  &:hover:not(.inputDisabled) {
+    border-color: #40A9FF;
+  }
+}
+
+.input {
+  padding: 0.5rem 0.75rem;
+  line-height: 2;
+  color: #595959;
+  &::placeholder {
+    color: #BFBFBF;
+  }
+}
+
+.inputFocused {
+  border-color:  #40A9FF;
+  box-shadow: 0px 0px 4px rgba(24, 144, 255, 0.5);
+}
+
+.inputDisabled {
+  background-color: #F5F5F5;
+}
+
+.inputError {
+  border-color: #F5222D;
+  & .input {
+    color: #F5222D;
+    
+  }
+  &.inputFocused {
+    box-shadow: 0px 0px 4px rgba(245, 34, 45, 0.5);
+  }
+}
+
+.helperTextRoot {
+  margin-top: 0.125rem;
+  font-size: 0.875rem;
+  line-height: 1.57;
+  color: #8C8C8C;
+  &.helperTextDisabled {
+    color: #8C8C8C;
+  }
+}
+
+.helperTextDisabled {}
+
+.helperTextError {
+  color: #F5222D;
+}

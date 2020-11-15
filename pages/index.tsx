@@ -4,6 +4,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 import Button from 'src/components/Button'
+import { TextInput } from 'src/components/Form'
 
 export default function Home() {
   return (
@@ -16,6 +17,20 @@ export default function Home() {
       <main className={styles.main}>
         <Button>Check mui button</Button>
         <Button disabled>Check mui button</Button>
+        <TextInput label="input label" placeholder="placeholder" helperText="helper text" />
+        <TextInput
+          label="input label"
+          placeholder="placeholder"
+          helperText="helper text"
+          disabled
+        />
+        <TextInput
+          label="input label"
+          placeholder="placeholder"
+          helperText="helper text"
+          required
+        />
+        <TextInput label="input label" placeholder="placeholder" helperText="helper text" error />
 
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
