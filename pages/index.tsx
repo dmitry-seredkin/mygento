@@ -31,7 +31,7 @@ export default function Home() {
           required
         />
         <TextInput label="input label" placeholder="placeholder" helperText="helper text" error />
-        <Checkbox label="checkbox label" />
+        <Checkbox label="label" />
 
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
