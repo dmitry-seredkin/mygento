@@ -1,3 +1,5 @@
+@use 'styles/colors' as *;
+
 .formLabel {
   margin-bottom: 1.5rem;
   font: {
@@ -5,6 +7,7 @@
     weight: 600;
   }
   line-height: 1.7;
+  color: get-color(text, main);
 }
 
 .radioGroup {
@@ -20,7 +23,7 @@
 
 .formControlLabelLabel {
   font-size: 0.875rem;
-  color: #595959;
+  color: get-color(text, secondary);
 }
 
 .radio {

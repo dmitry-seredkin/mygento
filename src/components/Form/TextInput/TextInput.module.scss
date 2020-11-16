@@ -1,22 +1,22 @@
+@use 'styles/colors' as *;
+
 .root {
   width: 100%;
 }
-
 
 .labelRoot {
   position: static;
   margin-bottom: 0.125rem;
   font-size: 0.875rem;
   line-height: 1.57;
-  color: #000;
+  color: get-color(text, main);
   transform: none;
   & + .inputRoot {
     margin: 0;
   }
   &.labelFocused, &.labelError {
-    color: #000;
+    color: get-color(text, main);
   }
-  
 }
 
 .labelFocused {}
@@ -34,15 +34,15 @@
 .input {
   padding: 0.5rem 0.75rem;
   line-height: 2;
-  color: #595959;
+  color: get-color(text, secondary);
   &::placeholder {
     color: #BFBFBF;
   }
 }
 
 .inputFocused {
-  border-color:  #40A9FF;
-  box-shadow: 0px 0px 4px rgba(24, 144, 255, 0.5);
+  border-color:  #40a9ff;
+  box-shadow: 0px 0px 4px get-color(primary, main, 0.5);
 }
 
 .inputDisabled {
@@ -50,13 +50,13 @@
 }
 
 .inputError {
-  border-color: #F5222D;
+  border-color: get-color(danger, main);
   & .input {
-    color: #F5222D;
+    color: get-color(danger, main);
     
   }
   &.inputFocused {
-    box-shadow: 0px 0px 4px rgba(245, 34, 45, 0.5);
+    box-shadow: 0px 0px 4px get-color(danger, main, 0.5);
   }
 }
 
@@ -73,5 +73,5 @@
 .helperTextDisabled {}
 
 .helperTextError {
-  color: #F5222D;
+  color: get-color(danger, main);
 }
