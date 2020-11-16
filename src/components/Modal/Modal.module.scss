@@ -1,0 +1,62 @@
+@use 'styles/colors' as *;
+@use 'styles/sizes' as *;
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15vh get-padding(mobile);
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 100%;
+  padding: get-padding(mobile);
+  color: get-color(text, main);
+  background-color: get-tint(800);
+  border-radius: 0.25rem;
+  outline: none;
+  box-shadow: 0 0.125rem 0.625rem get-tint(100, 0.23);
+}
+
+.containerCenterAlign {
+  padding-top: 2rem;
+  text-align: center;
+
+  .title {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.title {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  font: {
+    size: 1.5rem;
+    weight: 700;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: get-color(primary, main);
+
+  &:hover {
+    color: get-color(danger, main);
+  }
+}
+
+.content {
+  font-size: 1.25rem;
+  line-height: 1.9;
+  overflow: auto;
+}
+
+.acceptButton {
+  margin-top: 2rem;
+}

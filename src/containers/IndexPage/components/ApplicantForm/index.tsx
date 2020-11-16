@@ -5,6 +5,9 @@ import { Field, Form } from 'react-final-form'
 import Button from 'components/Button'
 import { Checkbox, Fieldset, RadioGroup, TextInput } from 'components/Form'
 import Link from 'components/Link'
+import Modal from 'components/Modal'
+
+import { PRIVACY_POLICY } from 'constants/privacyPolicy'
 
 import styles from './ApplicantForm.module.scss'
 
@@ -15,8 +18,10 @@ type TProps = TOuterProps
 
 const ApplicantForm: FC<TProps> = ({}) => {
   const [privacyModal, setPrivacyModal] = useState<boolean>(false)
+  const [successModal, setSuccessModal] = useState<boolean>(true)
+
   const onFormSubmit = () => {
-    console.log('submit')
+    setSuccessModal(true)
   }
 
   const onLinkClick: MouseEventHandler<HTMLAnchorElement> = e => {
@@ -27,8 +32,13 @@ const ApplicantForm: FC<TProps> = ({}) => {
 
   return (
     <Form
+      mutators={{
+        acceptPolicy: (args, state, tools) => {
+          tools.changeValue(state, 'privacy', () => true)
+        },
+      }}
       onSubmit={onFormSubmit}
-      render={({ handleSubmit, values }) => (
+      render={({ form, values, handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <Fieldset className={styles.personalDataFieldset} title="Личные данные">
             <Field
@@ -89,6 +99,31 @@ const ApplicantForm: FC<TProps> = ({}) => {
             )}
           />
           <Button type="submit">Отправить</Button>
+          <Modal
+            open={privacyModal}
+            acceptButtonProps={{
+              'aria-label': 'accept privacy policy',
+              children: 'Я согласен',
+            }}
+            title="Политика конфиденциальности"
+            onAccept={form.mutators.acceptPolicy}
+            onClose={() => setPrivacyModal(false)}
+          >
+            <p className={styles.privacyPolicy}>{PRIVACY_POLICY}</p>
+          </Modal>
+          <Modal
+            open={successModal}
+            acceptButtonProps={{
+              'aria-label': 'finish registration',
+              children: 'Понятно',
+            }}
+            title={`Спасибо ${values.firstName}!`}
+            isCenterTextAlign
+            onAccept={form.reset}
+            onClose={() => setSuccessModal(false)}
+          >
+            <span>Мы скоро свяжемся с вами</span>
+          </Modal>
           <pre>{JSON.stringify(values, null, 2)}</pre>
           {privacyModal ? 'true' : 'false'}
         </form>

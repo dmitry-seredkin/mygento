@@ -1,0 +1,14 @@
+$padding: (
+  mobile: 1rem,
+  desktop: 2.5rem
+);
+
+@function get-padding($type) {
+  @if map-has-key($padding, $type) {
+    @return map-get($padding, $type);
+  }
+
+  @warn 'unknown type `#{$type}` in padding';
+
+  @return null;
+}

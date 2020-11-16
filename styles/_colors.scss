@@ -17,15 +17,16 @@ $palette: (
   )
 );
 
-// Button
-// E8E8E8
-// BCBCBC
-
-// Input
-// 8C8C8C
-// F5F5F5
-// BFBFBF
-// D9D9D9
+$grey-tint: (
+  100: #000,
+  200: #8c8c8c,
+  300: #bcbcbc,
+  400: #bfbfbf,
+  500: #d9d9d9,
+  600: #e8e8e8,
+  700: #f5f5f5,
+  800: #fff
+);
 
 @function get-color($color, $tone, $alpha: 1) {
   @if map-has-key($palette, $color) {
@@ -43,6 +44,16 @@ $palette: (
   }
 
   @warn 'unknown color `#{$color}` in palette';
+
+  @return null;
+}
+
+@function get-tint($tone,  $alpha: 1) {
+  @if map-has-key($grey-tint, $tone) {
+    @return change-color(map-get($grey-tint, $tone), $alpha: $alpha);
+  }
+
+  @warn 'unknown tone `#{$tone}` in grey-tint';
 
   @return null;
 }

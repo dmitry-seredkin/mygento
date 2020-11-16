@@ -16,7 +16,8 @@
     "paths": {
       "assets/*": ["public/*"],
       "components/*": ["src/components/*"],
-      "containers/*": ["src/containers/*"]
+      "containers/*": ["src/containers/*"],
+      "constants/*": ["src/lib/constants/*"]
     },
     "plugins": [
       {

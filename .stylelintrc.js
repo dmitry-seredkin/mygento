@@ -196,6 +196,6 @@ module.exports = {
     ],
     'order/properties-alphabetical-order': null,
     'selector-class-pattern': '[a-z]+([A-Z]{1}[a-z]+)*',
-    'unit-allowed-list': ['rem', '%']
+    'unit-allowed-list': ['rem', 'vh', '%']
   }
 }

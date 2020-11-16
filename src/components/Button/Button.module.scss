@@ -19,6 +19,18 @@
   }
 }
 
+.rootOnlyIcon {
+  min-width: 2.5rem;
+  width: auto;
+  padding: 0;
+  background-color: transparent;
+
+  &:hover,
+  &:active {
+    background-color: transparent;
+  }
+}
+
 .disabled {
   background-color: #e8e8e8;
 
@@ -29,4 +41,10 @@
 
 .label {
   text-transform: none;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+  }
 }
