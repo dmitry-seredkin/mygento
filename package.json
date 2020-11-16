@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "yarn tsc --noEmit && yarn eslint src pages --ext ts,tsx",
-    "lint:fix": "yarn lint --fix"
+    "lint:style": "yarn stylelint src styles"
   },
   "husky": {
     "hooks": {
@@ -15,7 +15,8 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": "yarn lint:fix"
+    "*.{ts,tsx}": "yarn lint --fix",
+    "*.scss": "yarn lint:style --fix"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -42,6 +43,10 @@
     "next-optimized-images": "^2.6.2",
     "path": "^0.12.7",
     "prettier": "^2.1.2",
+    "stylelint": "^13.7.2",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
     "svg-sprite-loader": "^5.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
     "typescript": "^4.0.5",

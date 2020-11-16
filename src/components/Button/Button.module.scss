@@ -9,18 +9,21 @@
   background-color: get-color(primary, main);
   border-radius: 0.125rem;
   box-shadow: none !important;
+
   &:hover {
-    background-color: #40A9FF;
+    background-color: #40a9ff;
   }
+
   &:active {
-    background-color: #096DD9;
+    background-color: #096dd9;
   }
 }
 
 .disabled {
-  background-color: #E8E8E8;
-  & .label {
-    color: #BCBCBC;
+  background-color: #e8e8e8;
+
+  .label {
+    color: #bcbcbc;
   }
 }
 

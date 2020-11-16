@@ -1,17 +1,17 @@
-@use "sass:color";
-@use "sass:map";
+@use 'sass:color';
+@use 'sass:map';
 
 $palette: (
   text: (
     main: #262626,
     secondary:  #595959,
-    reversed: #FFF
+    reversed: #fff
   ),
   primary: (
-    main: #1890FF
+    main: #1890ff
   ),
   danger: (
-    main: #F5222D
+    main: #f5222d
   )
 );
 
@@ -30,17 +30,20 @@ $palette: (
 
 @function get-color($color, $tone, $alpha: 1) {
   @if map-has-key($palette, $color) {
-      $color: map-get($palette, $color);
+    $color: map-get($palette, $color);
 
-          @if map-has-key($color, $tone) {
-              $tone: map-get($color, $tone);
-              @return change-color($tone, $alpha: $alpha);
-          }
+    @if map-has-key($color, $tone) {
+      $tone: map-get($color, $tone);
 
-          @warn "unknown tone `#{$tone}` in color";
-          @return null;        
+      @return change-color($tone, $alpha: $alpha);
+    }
+
+    @warn 'unknown tone `#{$tone}` in color';
+
+    @return null;
   }
 
-  @warn "unknown color `#{$color}` in palette";
+  @warn 'unknown color `#{$color}` in palette';
+
   @return null;
 }
