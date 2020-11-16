@@ -31,7 +31,7 @@
   border-radius: 0.125rem;
 
   &:hover:not(.inputDisabled) {
-    border-color: #40a9ff;
+    border-color: get-color(primary, secondary);
   }
 }
 
@@ -46,7 +46,7 @@
 }
 
 .inputFocused {
-  border-color: #40a9ff;
+  border-color: get-color(primary, secondary);
   box-shadow: 0 0 0.25rem get-color(primary, main, 0.5);
 }
 

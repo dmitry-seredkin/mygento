@@ -11,11 +11,11 @@
   box-shadow: none !important;
 
   &:hover {
-    background-color: #40a9ff;
+    background-color: get-color(primary, secondary);
   }
 
   &:active {
-    background-color: #096dd9;
+    background-color: get-color(primary, dark);
   }
 }
 

@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, MouseEventHandler, useState } from 'react'
 
 import { Field, Form } from 'react-final-form'
 
 import Button from 'components/Button'
 import { Checkbox, RadioGroup, TextInput } from 'components/Form'
+import Link from 'components/Link'
 
 import styles from './ApplicantForm.module.scss'
 
@@ -13,12 +14,20 @@ type TOuterProps = {
 type TProps = TOuterProps
 
 const ApplicantForm: FC<TProps> = ({}) => {
+  const [privacyModal, setPrivacyModal] = useState<boolean>(false)
   const onFormSubmit = () => {
     console.log('submit')
   }
 
+  const onLinkClick: MouseEventHandler<HTMLAnchorElement> = e => {
+    e.preventDefault()
+
+    setPrivacyModal(true)
+  }
+
   return (
     <Form
+      onSubmit={onFormSubmit}
       render={({ handleSubmit, values }) => (
         <form onSubmit={handleSubmit}>
           <Field
@@ -54,11 +63,15 @@ const ApplicantForm: FC<TProps> = ({}) => {
           />
           <Field
             name="privacy"
+            type="checkbox"
             render={({ input }) => (
               <Checkbox
                 label={
                   <>
-                    Я согласен с <a>политикой конфиденциальности</a>
+                    Я согласен с{' '}
+                    <Link aria-label="open modal with privacy policy" onClick={onLinkClick}>
+                      политикой конфиденциальности
+                    </Link>
                   </>
                 }
                 {...input}
@@ -67,9 +80,9 @@ const ApplicantForm: FC<TProps> = ({}) => {
           />
           <Button type="submit">Отправить</Button>
           <pre>{JSON.stringify(values, null, 2)}</pre>
+          {privacyModal ? 'true' : 'false'}
         </form>
       )}
-      onSubmit={onFormSubmit}
     />
   )
 }

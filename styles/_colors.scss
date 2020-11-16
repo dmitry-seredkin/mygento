@@ -8,7 +8,9 @@ $palette: (
     reversed: #fff
   ),
   primary: (
-    main: #1890ff
+    main: #1890ff,
+    secondary: #40a9ff,
+    dark: #096dd9
   ),
   danger: (
     main: #f5222d
@@ -16,13 +18,10 @@ $palette: (
 );
 
 // Button
-// 40A9FF
-// 096DD9
 // E8E8E8
 // BCBCBC
 
 // Input
-// 40a9ff
 // 8C8C8C
 // F5F5F5
 // BFBFBF

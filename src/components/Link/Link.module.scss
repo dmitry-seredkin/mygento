@@ -1,0 +1,9 @@
+@use 'styles/colors' as *;
+
+.link {
+  color: get-color(primary, main);
+
+  &:hover {
+    color: get-color(primary, dark);
+  }
+}
