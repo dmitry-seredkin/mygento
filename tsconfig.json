@@ -15,7 +15,8 @@
     "noEmit": true,
     "paths": {
       "assets/*": ["public/*"],
-      "components/*": ["src/components/*"]
+      "components/*": ["src/components/*"],
+      "containers/*": ["src/containers/*"]
     },
     "plugins": [
       {

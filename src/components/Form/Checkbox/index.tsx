@@ -18,6 +18,7 @@ const Checkbox: FC<TProps> = ({ ...props }) => {
   return (
     <FormControlLabel
       classes={{
+        root: styles.formControlLabel,
         label: styles.label,
       }}
       control={

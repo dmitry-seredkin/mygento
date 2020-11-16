@@ -1,4 +1,4 @@
-import React, { FC, memo, SVGAttributes } from 'react'
+import React, { FC, SVGAttributes, memo } from 'react'
 
 export type TOuterProps = SVGAttributes<SVGSVGElement>
 type TProps = TOuterProps

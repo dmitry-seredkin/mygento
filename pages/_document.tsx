@@ -1,12 +1,12 @@
 import React from 'react'
 
 import Document, {
+  DocumentContext,
+  DocumentProps,
   Head,
   Html,
   Main,
   NextScript,
-  DocumentProps,
-  DocumentContext,
 } from 'next/document'
 import sprite from 'svg-sprite-loader/runtime/sprite.build'
 

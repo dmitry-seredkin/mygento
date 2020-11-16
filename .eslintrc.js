@@ -21,7 +21,7 @@ module.exports = {
     "prettier"
   ],
   rules: {
-    "prettier/prettier": 1,
+    'arrow-parens': [0, 'as-needed'],
     "react/display-name": 0,
     "react/prop-types": 0,
     'sort-imports': [

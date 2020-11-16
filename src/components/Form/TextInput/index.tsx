@@ -40,6 +40,7 @@ const TextInput: FC<TProps> = ({ ...props }) => {
   return (
     <TextField
       classes={textFieldClasses}
+      placeholder={typeof props.label === 'string' && props.label}
       FormHelperTextProps={formHelperTextProps}
       InputLabelProps={inputLabelProps}
       InputProps={inputProps}

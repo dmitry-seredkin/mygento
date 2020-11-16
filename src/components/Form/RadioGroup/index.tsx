@@ -4,6 +4,7 @@ import {
   FormControl,
   FormControlLabel,
   FormControlLabelProps,
+  FormControlProps,
   FormLabel,
   FormLabelProps,
   RadioGroup as MUIRadioGroup,
@@ -15,19 +16,16 @@ import { RadioCheckedIcon, RadioIcon } from 'components/Icons'
 
 import styles from './RadioGroup.module.scss'
 
-type TOuterProps = Omit<RadioGroupProps, 'classes'> & {
-  label?: string
-  options: Omit<FormControlLabelProps, 'classes' | 'control'>[]
-}
+type TOuterProps = Omit<RadioGroupProps, 'classes'> &
+  Pick<FormControlProps, 'required'> & {
+    label?: string
+    options: Omit<FormControlLabelProps, 'classes' | 'control'>[]
+  }
 type TProps = TOuterProps
 
-const RadioGroup: FC<TProps> = ({ label, options, ...props }) => (
-  <FormControl component="fieldset">
-    {!!label && (
-      <FormLabel className={styles.formLabel} component="label">
-        {label}
-      </FormLabel>
-    )}
+const RadioGroup: FC<TProps> = ({ label, options, required, ...props }) => (
+  <FormControl component="fieldset" required={required}>
+    {!!label && <FormLabel className={styles.formLabel}>{label}</FormLabel>}
     <MUIRadioGroup className={styles.radioGroup} {...props}>
       {options.map((option, index) => (
         <FormControlLabel
