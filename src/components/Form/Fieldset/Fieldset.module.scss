@@ -1,0 +1,15 @@
+@use 'styles/colors' as *;
+
+.container {
+  border-width: 0;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  color: get-color(text, main);
+  font: {
+    size: 1.375rem;
+    weight: 600;
+  }
+}

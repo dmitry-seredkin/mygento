@@ -14,25 +14,27 @@ import styles from './Checkbox.module.scss'
 type TOuterProps = Omit<FormControlLabelProps, 'control'>
 type TProps = TOuterProps
 
-const Checkbox: FC<TProps> = ({ ...props }) => {
+const Checkbox: FC<TProps> = ({ className, ...props }) => {
   return (
-    <FormControlLabel
-      classes={{
-        root: styles.formControlLabel,
-        label: styles.label,
-      }}
-      control={
-        <MUICheckbox
-          classes={{
-            root: styles.checkbox,
-          }}
-          checkedIcon={<CheckboxCheckedIcon className={styles.icon} />}
-          icon={<CheckboxIcon className={styles.icon} />}
-          disableRipple
-        />
-      }
-      {...props}
-    />
+    <FormControl className={className}>
+      <FormControlLabel
+        classes={{
+          root: styles.formControlLabel,
+          label: styles.label,
+        }}
+        control={
+          <MUICheckbox
+            classes={{
+              root: styles.checkbox,
+            }}
+            checkedIcon={<CheckboxCheckedIcon className={styles.icon} />}
+            icon={<CheckboxIcon className={styles.icon} />}
+            disableRipple
+          />
+        }
+        {...props}
+      />
+    </FormControl>
   )
 }
 

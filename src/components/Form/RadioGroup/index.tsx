@@ -23,8 +23,8 @@ type TOuterProps = Omit<RadioGroupProps, 'classes'> &
   }
 type TProps = TOuterProps
 
-const RadioGroup: FC<TProps> = ({ label, options, required, ...props }) => (
-  <FormControl component="fieldset" required={required}>
+const RadioGroup: FC<TProps> = ({ className, label, options, required, ...props }) => (
+  <FormControl className={className} component="fieldset" required={required}>
     {!!label && <FormLabel className={styles.formLabel}>{label}</FormLabel>}
     <MUIRadioGroup className={styles.radioGroup} {...props}>
       {options.map((option, index) => (
