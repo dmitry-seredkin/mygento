@@ -1,40 +1,35 @@
 import React, { FC } from 'react'
 
-import {
-  FormControl,
-  FormControlLabel,
-  FormControlLabelProps,
-  Checkbox as MUICheckbox,
-} from '@material-ui/core'
+import { FormControlLabel, FormControlLabelProps, Checkbox as MUICheckbox } from '@material-ui/core'
+import cn from 'classnames'
 
 import { CheckboxCheckedIcon, CheckboxIcon } from 'components/Icons'
 
 import styles from './Checkbox.module.scss'
 
-type TOuterProps = Omit<FormControlLabelProps, 'control'>
+export type TOuterProps = Omit<FormControlLabelProps, 'control'> & {
+  error?: boolean
+}
 type TProps = TOuterProps
 
-const Checkbox: FC<TProps> = ({ className, ...props }) => {
+const Checkbox: FC<TProps> = ({ error, ...props }) => {
   return (
-    <FormControl className={className}>
-      <FormControlLabel
-        classes={{
-          root: styles.formControlLabel,
-          label: styles.label,
-        }}
-        control={
-          <MUICheckbox
-            classes={{
-              root: styles.checkbox,
-            }}
-            checkedIcon={<CheckboxCheckedIcon className={styles.icon} />}
-            icon={<CheckboxIcon className={styles.icon} />}
-            disableRipple
-          />
-        }
-        {...props}
-      />
-    </FormControl>
+    <FormControlLabel
+      classes={{
+        root: styles.formControlLabel,
+        label: styles.label,
+      }}
+      control={
+        <MUICheckbox
+          classes={{
+            root: cn(styles.checkbox, error && styles.checkboxError),
+          }}
+          checkedIcon={<CheckboxCheckedIcon className={styles.icon} />}
+          icon={<CheckboxIcon className={styles.icon} />}
+        />
+      }
+      {...props}
+    />
   )
 }
 

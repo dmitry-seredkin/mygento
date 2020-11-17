@@ -10,7 +10,8 @@
   border-radius: 0.125rem;
   box-shadow: none !important;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: get-color(primary, secondary);
   }
 

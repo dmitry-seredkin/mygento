@@ -3,7 +3,14 @@ import React, { FC, MouseEventHandler, useState } from 'react'
 import { Field, Form } from 'react-final-form'
 
 import Button from 'components/Button'
-import { Checkbox, Fieldset, RadioGroup, TextInput, WrappedTextInput } from 'components/Form'
+import {
+  Checkbox,
+  Fieldset,
+  RadioGroup,
+  TextInput,
+  WrappedCheckbox,
+  WrappedTextInput,
+} from 'components/Form'
 import Link from 'components/Link'
 import Modal from 'components/Modal'
 
@@ -54,8 +61,7 @@ const ApplicantForm: FC<TProps> = ({}) => {
               label="Фамилия *"
             />
             <WrappedTextInput
-              type="email"
-              fieldProps={{ name: 'email', validate: compose([required, email]) }}
+              fieldProps={{ name: 'email', type: 'email', validate: compose([required, email]) }}
               label="Электронная почта *"
             />
           </Fieldset>
@@ -76,23 +82,17 @@ const ApplicantForm: FC<TProps> = ({}) => {
           <Fieldset className={styles.githubFieldset} title="Github">
             <WrappedTextInput fieldProps={{ name: 'github' }} label="Вставьте ссылку на Github" />
           </Fieldset>
-          <Field
-            name="privacy"
-            type="checkbox"
-            render={({ input }) => (
-              <Checkbox
-                className={styles.checkbox}
-                label={
-                  <>
-                    * Я согласен с{' '}
-                    <Link aria-label="open modal with privacy policy" onClick={onLinkClick}>
-                      политикой конфиденциальности
-                    </Link>
-                  </>
-                }
-                {...input}
-              />
-            )}
+          <WrappedCheckbox
+            className={styles.checkbox}
+            fieldProps={{ name: 'privacy', type: 'checkbox', validate: required }}
+            label={
+              <>
+                * Я согласен с{' '}
+                <Link aria-label="open modal with privacy policy" onClick={onLinkClick}>
+                  политикой конфиденциальности
+                </Link>
+              </>
+            }
           />
           <Button type="submit">Отправить</Button>
           <Modal

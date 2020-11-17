@@ -16,7 +16,7 @@ const WrappedTextInput: FC<TProps> = ({ fieldProps, ...props }) => (
       <TextInput
         id={fieldProps.name}
         error={{
-          isShown: meta.error && meta.touched,
+          isShown: meta.error && meta.touched && !meta.active,
           text: meta.error || '',
         }}
         {...props}
