@@ -18,7 +18,7 @@ type TProps = DocumentProps & {
 class MyDocument extends Document<TProps> {
   static async getInitialProps(ctx: DocumentContext) {
     const originalRenderPage = ctx.renderPage
-    const sheets = new ServerStyleSheets()
+    const sheets = new ServerStyleSheets({ injectFirst: true })
 
     ctx.renderPage = () =>
       originalRenderPage({
