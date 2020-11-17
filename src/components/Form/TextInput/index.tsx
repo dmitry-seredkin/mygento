@@ -4,10 +4,15 @@ import { TextField, TextFieldProps } from '@material-ui/core'
 
 import styles from './TextInput.module.scss'
 
-type TOuterProps = Omit<TextFieldProps, 'variant'>
+export type TOuterProps = Omit<TextFieldProps, 'classes' | 'error' | 'variant'> & {
+  error?: {
+    isShown: boolean
+    text: string
+  }
+}
 type TProps = TOuterProps
 
-const TextInput: FC<TProps> = ({ ...props }) => {
+const TextInput: FC<TProps> = ({ error, ...props }) => {
   const textFieldClasses: TextFieldProps['classes'] = {
     root: styles.root,
   }
@@ -40,10 +45,12 @@ const TextInput: FC<TProps> = ({ ...props }) => {
   return (
     <TextField
       classes={textFieldClasses}
-      placeholder={typeof props.label === 'string' && props.label}
+      placeholder={typeof props.label === 'string' && props.label.replace(/\s*\*$/, '')}
       FormHelperTextProps={formHelperTextProps}
       InputLabelProps={inputLabelProps}
       InputProps={inputProps}
+      helperText={error.isShown ? error.text : props.helperText}
+      error={error.isShown}
       {...props}
     />
   )

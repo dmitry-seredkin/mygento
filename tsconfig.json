@@ -17,7 +17,8 @@
       "assets/*": ["public/*"],
       "components/*": ["src/components/*"],
       "containers/*": ["src/containers/*"],
-      "constants/*": ["src/lib/constants/*"]
+      "constants/*": ["src/lib/constants/*"],
+      "utils/*": ["src/lib/utils/*"]
     },
     "plugins": [
       {
