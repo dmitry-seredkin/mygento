@@ -1,11 +1,12 @@
-import React, { FC, MouseEventHandler, useState } from 'react'
+import React, { FC, MouseEventHandler, useCallback, useState } from 'react'
 
-import { Field, Form } from 'react-final-form'
+import { FormApi } from 'final-form'
+import { Form } from 'react-final-form'
 
 import Button from 'components/Button'
 import { Fieldset, WrappedCheckbox, WrappedRadioGroup, WrappedTextInput } from 'components/Form'
 import Link from 'components/Link'
-import Modal from 'components/Modal'
+import Modal, { TOuterProps as ModalProps } from 'components/Modal'
 
 import { compose, email, required } from 'utils/validation'
 
@@ -19,18 +20,33 @@ type TOuterProps = {
 type TProps = TOuterProps
 
 const ApplicantForm: FC<TProps> = ({}) => {
-  const [privacyModal, setPrivacyModal] = useState<boolean>(false)
-  const [successModal, setSuccessModal] = useState<boolean>(false)
+  const [modal, setModal] = useState<Omit<ModalProps, 'onClose'> | null>(null)
 
-  const onFormSubmit = () => {
-    setSuccessModal(true)
-  }
+  const onLinkClick = useCallback(
+    (form: FormApi): MouseEventHandler<HTMLAnchorElement> => e => {
+      e.preventDefault()
 
-  const onLinkClick: MouseEventHandler<HTMLAnchorElement> = e => {
-    e.preventDefault()
+      setModal({
+        open: true,
+        buttonTitle: 'Я согласен',
+        children: <p className={styles.privacyPolicy}>{PRIVACY_POLICY}</p>,
+        title: 'Политика конфиденциальности',
+        onAccept: form.mutators.acceptPolicy,
+      })
+    },
+    []
+  )
 
-    setPrivacyModal(true)
-  }
+  const onFormSubmit = useCallback((values, form) => {
+    setModal({
+      open: true,
+      buttonTitle: 'Понятно',
+      children: <span>Мы скоро свяжемся с вами</span>,
+      isCenterTextAlign: true,
+      title: `Спасибо ${values.firstName}!`,
+      onAccept: form.restart,
+    })
+  }, [])
 
   return (
     <Form
@@ -77,7 +93,7 @@ const ApplicantForm: FC<TProps> = ({}) => {
             label={
               <>
                 * Я согласен с{' '}
-                <Link aria-label="open modal with privacy policy" onClick={onLinkClick}>
+                <Link aria-label="open modal with privacy policy" onClick={onLinkClick(form)}>
                   политикой конфиденциальности
                 </Link>
               </>
@@ -85,33 +101,10 @@ const ApplicantForm: FC<TProps> = ({}) => {
           />
           <Button type="submit">Отправить</Button>
           <Modal
-            open={privacyModal}
-            acceptButtonProps={{
-              'aria-label': 'accept privacy policy',
-              children: 'Я согласен',
-            }}
-            title="Политика конфиденциальности"
-            onAccept={form.mutators.acceptPolicy}
-            onClose={() => setPrivacyModal(false)}
-          >
-            <p className={styles.privacyPolicy}>{PRIVACY_POLICY}</p>
-          </Modal>
-          <Modal
-            open={successModal}
-            acceptButtonProps={{
-              'aria-label': 'finish registration',
-              children: 'Понятно',
-            }}
-            title={`Спасибо ${values.firstName}!`}
-            isCenterTextAlign
-            // @ts-expect-error
-            onAccept={form.restart}
-            onClose={() => setSuccessModal(false)}
-          >
-            <span>Мы скоро свяжемся с вами</span>
-          </Modal>
-          <pre>{JSON.stringify(values, null, 2)}</pre>
-          {privacyModal ? 'true' : 'false'}
+            open={!!modal?.open}
+            onClose={() => setModal({ ...modal, open: false })}
+            {...modal}
+          />
         </form>
       )}
     />
