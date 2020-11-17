@@ -75,10 +75,12 @@
   &.helperTextDisabled {
     color: #8c8c8c;
   }
+
+  &.helperTextError {
+    color: get-color(danger, main);
+  }
 }
 
 .helperTextDisabled {}
 
-.helperTextError {
-  color: get-color(danger, main);
-}
+.helperTextError {}

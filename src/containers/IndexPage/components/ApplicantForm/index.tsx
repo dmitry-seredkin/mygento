@@ -1,14 +1,15 @@
 import React, { FC, MouseEventHandler, useCallback, useState } from 'react'
 
 import { FormApi } from 'final-form'
-import { Form } from 'react-final-form'
+import { Field, Form } from 'react-final-form'
 
 import Button from 'components/Button'
+import Dropzone from 'components/Dropzone'
 import { Fieldset, WrappedCheckbox, WrappedRadioGroup, WrappedTextInput } from 'components/Form'
 import Link from 'components/Link'
 import Modal, { TOuterProps as ModalProps } from 'components/Modal'
 
-import { compose, email, required } from 'utils/validation'
+import { compose, email, required, size } from 'utils/validation'
 
 import { PRIVACY_POLICY } from 'constants/privacyPolicy'
 
@@ -54,6 +55,9 @@ const ApplicantForm: FC<TProps> = ({}) => {
         acceptPolicy: (args, state, tools) => {
           tools.changeValue(state, 'privacy', () => true)
         },
+        removeResumeFile: (args, state, tools) => {
+          tools.changeValue(state, 'resume', () => null)
+        },
       }}
       onSubmit={onFormSubmit}
       render={({ form, values, handleSubmit }) => (
@@ -70,8 +74,22 @@ const ApplicantForm: FC<TProps> = ({}) => {
               label="Фамилия *"
             />
             <WrappedTextInput
+              className={styles.textInput}
               fieldProps={{ name: 'email', type: 'email', validate: compose([required, email]) }}
               label="Электронная почта *"
+            />
+            <Field<File>
+              name="resume"
+              validate={compose([required, size])}
+              render={({ input: { value, onChange }, meta }) => (
+                <Dropzone
+                  accept=".pdf"
+                  error={meta.touched && meta.error}
+                  value={value}
+                  onDrop={files => onChange(files[0])}
+                  onRemove={form.mutators.removeResumeFile}
+                />
+              )}
             />
           </Fieldset>
           <WrappedRadioGroup

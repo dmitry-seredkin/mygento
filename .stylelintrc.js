@@ -4,6 +4,7 @@ module.exports = {
   rules: {
     'block-no-empty': null,
     'no-descending-specificity': null,
+    'max-nesting-depth': 2,
     'order/properties-order': [
       'content',
       'position',

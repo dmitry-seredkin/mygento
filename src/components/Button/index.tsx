@@ -15,6 +15,7 @@ const Button: FC<TProps> = ({ onlyIcon, ...props }) => {
     root: cn(styles.root, onlyIcon && styles.rootOnlyIcon),
     disabled: styles.disabled,
     label: styles.label,
+    endIcon: styles.endIcon,
   }
 
   return <MUIButton classes={muiClasses} variant="contained" disableRipple {...props} />

@@ -44,11 +44,16 @@
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  color: get-color(primary, main);
 
   &:hover {
-    color: get-color(danger, main);
+    .crossIcon {
+      fill: get-color(danger, main);
+    }
   }
+}
+
+.crossIcon {
+  fill: get-color(primary, main);
 }
 
 .content {

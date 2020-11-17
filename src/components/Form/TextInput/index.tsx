@@ -45,12 +45,12 @@ const TextInput: FC<TProps> = ({ error, ...props }) => {
   return (
     <TextField
       classes={textFieldClasses}
-      placeholder={typeof props.label === 'string' && props.label.replace(/\s*\*$/, '')}
+      placeholder={typeof props.label === 'string' ? props.label.replace(/\s*\*$/, '') : undefined}
       FormHelperTextProps={formHelperTextProps}
       InputLabelProps={inputLabelProps}
       InputProps={inputProps}
-      helperText={error.isShown ? error.text : props.helperText}
-      error={error.isShown}
+      helperText={error?.isShown ? error.text : props.helperText}
+      error={error?.isShown}
       {...props}
     />
   )

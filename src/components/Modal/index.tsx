@@ -51,7 +51,7 @@ const Modal: FC<TProps> = ({
             onlyIcon
             onClick={onClose}
           >
-            <CrossIcon />
+            <CrossIcon className={styles.crossIcon} />
           </Button>
           <div className={styles.content}>{children}</div>
           <Button className={styles.acceptButton} onClick={onAcceptClick} {...acceptButtonProps}>

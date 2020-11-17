@@ -1,6 +1,6 @@
 import { FieldValidator } from 'final-form'
 
-const required: FieldValidator<string | boolean> = value => {
+const required: FieldValidator<string | boolean | File> = value => {
   const error = 'Обязательное поле'
 
   if (typeof value === 'string') {
