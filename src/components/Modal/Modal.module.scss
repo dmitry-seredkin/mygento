@@ -1,4 +1,5 @@
 @use 'styles/colors' as *;
+@use 'styles/query' as *;
 @use 'styles/sizes' as *;
 
 .modal {
@@ -20,11 +21,23 @@
   border-radius: 0.25rem;
   outline: none;
   box-shadow: 0 0.125rem 0.625rem get-tint(100, 0.23);
+
+  @include mq-medium-up {
+    align-items: center;
+    min-width: 34.1875rem;
+    max-width: 47.375rem;
+    width: auto;
+    padding: get-padding(notepad);
+  }
 }
 
 .containerCenterAlign {
   padding-top: 2rem;
   text-align: center;
+
+  @include mq-medium-up {
+    padding-top: get-padding(notepad);
+  }
 
   .title {
     margin-bottom: 0.5rem;
@@ -44,6 +57,11 @@
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+
+  @include mq-medium-up {
+    top: 1.3rem;
+    right: 1.3rem;
+  }
 
   &:hover {
     .crossIcon {

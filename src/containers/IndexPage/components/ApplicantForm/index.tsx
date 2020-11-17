@@ -84,6 +84,7 @@ const ApplicantForm: FC<TProps> = ({}) => {
               render={({ input: { value, onChange }, meta }) => (
                 <Dropzone
                   accept=".pdf"
+                  className={styles.dropzone}
                   error={meta.touched && meta.error}
                   value={value}
                   onDrop={files => onChange(files[0])}

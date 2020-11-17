@@ -1,12 +1,26 @@
+@use 'styles/query' as *;
+@use 'styles/sizes' as *;
+
 .container {
-  padding: 5rem 1rem;
+  padding: 5rem get-padding(mobile);
+
+  @include mq-small-up {
+    padding: 6rem get-padding(notepad);
+  }
+
+  @include mq-large-up {
+    padding: 7.5rem get-padding(desktop) 5rem;
+  }
 }
 
 .title {
   margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 500;
   line-height: 1;
-  font: {
-    size: 2.5rem;
-    weight: 500;
+
+  @include mq-small-up {
+    margin-bottom: 3rem;
+    font-weight: 600;
   }
 }

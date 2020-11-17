@@ -1,6 +1,7 @@
 $padding: (
   mobile: 1rem,
-  desktop: 2.5rem
+  notepad: 2.5rem,
+  desktop: 16rem,
 );
 
 @function get-padding($type) {

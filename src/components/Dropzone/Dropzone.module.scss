@@ -1,6 +1,14 @@
 @use 'styles/colors' as *;
+@use 'styles/query' as *;
 
-.wrapper {}
+.wrapper {
+  display: inline-block;
+  width: 100%;
+
+  @include mq-medium-up {
+    max-width: 16rem;
+  }
+}
 
 .container {
   position: relative;
@@ -8,11 +16,13 @@
   justify-content: center;
   align-items: center;
   height: 2.5rem;
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: get-color(text, secondary);
   background-color: get-tint(700);
   border: 0.0625rem dashed get-tint(500);
+  cursor: pointer;
+
+  @include mq-medium-up {
+    margin-top: 1.4375rem;
+  }
 }
 
 .containerWithValue {
@@ -74,10 +84,14 @@
   transform: translateY(-50%);
 }
 
-.text {}
+.text {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: get-color(text, secondary);
+}
 
 .error {
-  margin-top: 0.5rem;
+  margin-top: 0.125rem;
   font-size: 0.875rem;
   line-height: 1.6;
   color: get-color(danger, main);

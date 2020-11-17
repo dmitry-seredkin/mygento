@@ -20,9 +20,9 @@ const Dropzone: FC<TProps> = ({ className, error, value, onRemove, ...props }) =
   const { getInputProps, getRootProps } = useDropzone({ ...props, disabled: !!value, noDrag: true })
 
   return (
-    <div className={styles.wrapper}>
+    <div className={cn(styles.wrapper, className)}>
       <div
-        className={cn(styles.container, !!value && styles.containerWithValue, className)}
+        className={cn(styles.container, !!value && styles.containerWithValue)}
         {...getRootProps()}
       >
         <input {...getInputProps()} />

@@ -16,6 +16,16 @@ type TProps = DocumentProps & {
 
 class MyDocument extends Document<TProps> {
   static async getInitialProps(ctx: DocumentContext) {
+    const originalRenderPage = ctx.renderPage
+
+    ctx.renderPage = () =>
+      originalRenderPage({
+        // useful for wrapping the whole react tree
+        enhanceApp: App => App,
+        // useful for wrapping in a per-page basis
+        enhanceComponent: Component => Component,
+      })
+
     const initialProps = await Document.getInitialProps(ctx)
     const spriteContent = sprite.stringify() as string
 

@@ -1,11 +1,41 @@
-.personalDataFieldset,
+@use 'styles/query' as *;
+
+%small-margin {
+  margin-bottom: 2.5rem;
+
+  @include mq-medium-up {
+    margin-bottom: 3rem;
+  }
+}
+
 .sex,
 .checkbox {
-  margin-bottom: 2.5rem;
+  @extend %small-margin;
+}
+
+.personalDataFieldset {
+  @extend %small-margin;
+
+  @include mq-medium-up {
+    margin: 0;
+  }
+}
+
+%medium-margin {
+  @include mq-medium-up {
+    margin-right: 5rem;
+    margin-bottom: 3rem;
+  }
 }
 
 .textInput {
+  @extend %medium-margin;
+
   margin-bottom: 1.5rem;
+}
+
+.dropzone {
+  @extend %medium-margin;
 }
 
 .githubFieldset {

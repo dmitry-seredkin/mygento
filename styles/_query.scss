@@ -1,0 +1,25 @@
+@use 'sass:map';
+
+$screen-size: (
+  small: 48rem,  // 768px
+  medium: 64rem, // 1024px
+  large: 80rem,  // 1280px
+);
+
+@mixin mq-small-up {
+  @media (min-width: map-get($screen-size, small)) {
+    @content;
+  }
+}
+
+@mixin mq-medium-up {
+  @media (min-width: map-get($screen-size, medium)) {
+    @content;
+  }
+}
+
+@mixin mq-large-up {
+  @media (min-width: map-get($screen-size, large)) {
+    @content;
+  }
+}
