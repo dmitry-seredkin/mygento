@@ -16,16 +16,30 @@ import { RadioCheckedIcon, RadioIcon } from 'components/Icons'
 
 import styles from './RadioGroup.module.scss'
 
-type TOuterProps = Omit<RadioGroupProps, 'classes'> &
-  Pick<FormControlProps, 'required'> & {
-    label?: string
-    options: Omit<FormControlLabelProps, 'classes' | 'control'>[]
+export type TOuterProps = Omit<RadioGroupProps, 'classes'> & {
+  error?: {
+    isShown: boolean
+    text: string
   }
+  label?: string
+  options: Omit<FormControlLabelProps, 'classes' | 'control'>[]
+}
 type TProps = TOuterProps
 
-const RadioGroup: FC<TProps> = ({ className, label, options, required, ...props }) => (
-  <FormControl className={className} component="fieldset" required={required}>
-    {!!label && <FormLabel className={styles.formLabel}>{label}</FormLabel>}
+const RadioGroup: FC<TProps> = ({ className, error, label, options, ...props }) => (
+  <FormControl className={className} component="fieldset">
+    {!!label && (
+      <FormLabel
+        classes={{
+          root: styles.formLabelRoot,
+          focused: styles.formLabelFocused,
+        }}
+        component="legend"
+      >
+        {label}
+        {error.isShown && <span className={styles.errorMessage}>{error.text}</span>}
+      </FormLabel>
+    )}
     <MUIRadioGroup className={styles.radioGroup} {...props}>
       {options.map((option, index) => (
         <FormControlLabel

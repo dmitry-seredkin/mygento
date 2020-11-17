@@ -6,4 +6,5 @@ export { default as TextInput } from './TextInput'
 
 // wrapped
 export { default as WrappedCheckbox } from './WrappedCheckbox'
+export { default as WrappedRadioGroup } from './WrappedRadioGroup'
 export { default as WrappedTextInput } from './WrappedTextInput'

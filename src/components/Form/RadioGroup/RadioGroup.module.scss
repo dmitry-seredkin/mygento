@@ -1,6 +1,6 @@
 @use 'styles/colors' as *;
 
-.formLabel {
+.formLabelRoot {
   margin-bottom: 1.5rem;
   line-height: 1.7;
   color: get-color(text, main);
@@ -8,6 +8,20 @@
     size: 1.375rem;
     weight: 600;
   }
+
+  &.formLabelFocused {
+    color: get-color(text, main);
+  }
+}
+
+.formLabelFocused {}
+
+.errorMessage {
+  display: inline-block;
+  margin-left: 1rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: get-color(danger, main);
 }
 
 .radioGroup {

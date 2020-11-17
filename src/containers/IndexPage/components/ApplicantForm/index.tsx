@@ -3,14 +3,7 @@ import React, { FC, MouseEventHandler, useState } from 'react'
 import { Field, Form } from 'react-final-form'
 
 import Button from 'components/Button'
-import {
-  Checkbox,
-  Fieldset,
-  RadioGroup,
-  TextInput,
-  WrappedCheckbox,
-  WrappedTextInput,
-} from 'components/Form'
+import { Fieldset, WrappedCheckbox, WrappedRadioGroup, WrappedTextInput } from 'components/Form'
 import Link from 'components/Link'
 import Modal from 'components/Modal'
 
@@ -65,19 +58,15 @@ const ApplicantForm: FC<TProps> = ({}) => {
               label="Электронная почта *"
             />
           </Fieldset>
-          <Field
-            name="sex"
-            render={({ input }) => (
-              <RadioGroup
-                className={styles.sex}
-                label="Пол *"
-                options={[
-                  { label: 'Мужской', value: 'male' },
-                  { label: 'Женский', value: 'female' },
-                ]}
-                {...input}
-              />
-            )}
+          <WrappedRadioGroup
+            className={styles.sex}
+            errorMessage="укажите пол"
+            fieldProps={{ name: 'sex', validate: required }}
+            label="Пол *"
+            options={[
+              { label: 'Мужской', value: 'male' },
+              { label: 'Женский', value: 'female' },
+            ]}
           />
           <Fieldset className={styles.githubFieldset} title="Github">
             <WrappedTextInput fieldProps={{ name: 'github' }} label="Вставьте ссылку на Github" />
