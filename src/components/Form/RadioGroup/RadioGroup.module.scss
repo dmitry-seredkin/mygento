@@ -3,6 +3,7 @@
 
 .formLabelRoot {
   margin-bottom: 1.5rem;
+  font-family: SFProDisplay, sans-serif;
   line-height: 1.7;
   color: get-color(text, main);
   font: {
@@ -42,6 +43,7 @@
 }
 
 .formControlLabelLabel {
+  font-family: SFProDisplay, sans-serif;
   font-size: 0.875rem;
   color: get-color(text, secondary);
 }

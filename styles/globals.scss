@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family:
+    SFProDisplay,
     -apple-system,
     BlinkMacSystemFont,
     Segoe UI,
@@ -25,4 +26,24 @@ a {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src:
+    url('../public/fonts/SFProDisplayRegular/SFProDisplayRegular.woff2') format('woff2'),
+    url('../public/fonts/SFProDisplayRegular/SFProDisplayRegular.woff') format('woff'),
+    url('../public/fonts/SFProDisplayRegular/SFProDisplayRegular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src:
+    url('../public/fonts/SFProDisplaySemibold/SFProDisplaySemibold.woff2') format('woff2'),
+    url('../public/fonts/SFProDisplaySemibold/SFProDisplaySemibold.woff') format('woff'),
+    url('../public/fonts/SFProDisplaySemibold/SFProDisplaySemibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
 }
