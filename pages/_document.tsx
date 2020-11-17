@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { ServerStyleSheets } from '@material-ui/core/styles'
 import Document, {
   DocumentContext,
   DocumentProps,
@@ -17,11 +18,12 @@ type TProps = DocumentProps & {
 class MyDocument extends Document<TProps> {
   static async getInitialProps(ctx: DocumentContext) {
     const originalRenderPage = ctx.renderPage
+    const sheets = new ServerStyleSheets()
 
     ctx.renderPage = () =>
       originalRenderPage({
         // useful for wrapping the whole react tree
-        enhanceApp: App => App,
+        enhanceApp: App => props => sheets.collect(<App {...props} />),
         // useful for wrapping in a per-page basis
         enhanceComponent: Component => Component,
       })
@@ -32,6 +34,7 @@ class MyDocument extends Document<TProps> {
     return {
       ...initialProps,
       spriteContent,
+      styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
     }
   }
 
