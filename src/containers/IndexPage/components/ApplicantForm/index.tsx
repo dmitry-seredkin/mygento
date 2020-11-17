@@ -9,7 +9,7 @@ import { Fieldset, WrappedCheckbox, WrappedRadioGroup, WrappedTextInput } from '
 import Link from 'components/Link'
 import Modal, { TOuterProps as ModalProps } from 'components/Modal'
 
-import { compose, email, required, size } from 'utils/validation'
+import { compose, email, name, required, size } from 'utils/validation'
 
 import { PRIVACY_POLICY } from 'constants/privacyPolicy'
 
@@ -65,18 +65,21 @@ const ApplicantForm: FC<TProps> = ({}) => {
           <Fieldset className={styles.personalDataFieldset} title="Личные данные">
             <WrappedTextInput
               className={styles.textInput}
-              fieldProps={{ name: 'firstName', validate: required }}
-              label="Имя *"
+              fieldProps={{ name: 'firstName', validate: compose([required, name]) }}
+              label="Имя"
+              required
             />
             <WrappedTextInput
               className={styles.textInput}
-              fieldProps={{ name: 'lastName', validate: required }}
-              label="Фамилия *"
+              fieldProps={{ name: 'lastName', validate: compose([required, name]) }}
+              label="Фамилия"
+              required
             />
             <WrappedTextInput
               className={styles.textInput}
               fieldProps={{ name: 'email', type: 'email', validate: compose([required, email]) }}
-              label="Электронная почта *"
+              label="Электронная почта"
+              required
             />
             <Field<File>
               name="resume"
@@ -102,6 +105,9 @@ const ApplicantForm: FC<TProps> = ({}) => {
               { label: 'Мужской', value: 'male' },
               { label: 'Женский', value: 'female' },
             ]}
+            radioProps={{
+              required: true,
+            }}
           />
           <Fieldset className={styles.githubFieldset} title="Github">
             <WrappedTextInput fieldProps={{ name: 'github' }} label="Вставьте ссылку на Github" />
@@ -117,6 +123,7 @@ const ApplicantForm: FC<TProps> = ({}) => {
                 </Link>
               </>
             }
+            required
           />
           <Button type="submit" disabled={!form.getState().valid}>
             Отправить

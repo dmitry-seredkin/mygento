@@ -4,12 +4,11 @@ import {
   FormControl,
   FormControlLabel,
   FormControlLabelProps,
-  FormControlProps,
   FormLabel,
-  FormLabelProps,
   RadioGroup as MUIRadioGroup,
   Radio,
   RadioGroupProps,
+  RadioProps,
 } from '@material-ui/core'
 
 import { RadioCheckedIcon, RadioIcon } from 'components/Icons'
@@ -23,10 +22,11 @@ export type TOuterProps = Omit<RadioGroupProps, 'classes'> & {
   }
   label?: string
   options: Omit<FormControlLabelProps, 'classes' | 'control'>[]
+  radioProps?: Omit<RadioProps, 'className' | 'classes' | 'checkedIcon' | 'icon'>
 }
 type TProps = TOuterProps
 
-const RadioGroup: FC<TProps> = ({ className, error, label, options, ...props }) => (
+const RadioGroup: FC<TProps> = ({ className, error, label, options, radioProps, ...props }) => (
   <FormControl className={className} component="fieldset">
     {!!label && (
       <FormLabel
@@ -53,6 +53,7 @@ const RadioGroup: FC<TProps> = ({ className, error, label, options, ...props }) 
               className={styles.radio}
               checkedIcon={<RadioCheckedIcon className={styles.icon} />}
               icon={<RadioIcon className={styles.icon} />}
+              {...radioProps}
             />
           }
           {...option}
