@@ -60,7 +60,7 @@ const ApplicantForm: FC<TProps> = ({}) => {
         },
       }}
       onSubmit={onFormSubmit}
-      render={({ form, values, handleSubmit }) => (
+      render={({ form, handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <Fieldset className={styles.personalDataFieldset} title="Личные данные">
             <WrappedTextInput
@@ -118,7 +118,9 @@ const ApplicantForm: FC<TProps> = ({}) => {
               </>
             }
           />
-          <Button type="submit">Отправить</Button>
+          <Button type="submit" disabled={!form.getState().valid}>
+            Отправить
+          </Button>
           <Modal
             open={!!modal?.open}
             onClose={() => setModal({ ...modal, open: false })}
